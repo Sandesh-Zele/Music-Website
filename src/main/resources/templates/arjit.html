@@ -1,0 +1,1378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="/style.css">
+    <title>Music Website</title>
+    <style>
+        header .song::before{
+        background: url('/arjit_bg.png');
+    }
+        *{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    font-family: 'Poppins',sans-serif;
+    width: 100%;
+    height: 100vh;
+    background: #121213;
+    display: grid;
+    place-items: center;
+}
+header{
+    position: relative;
+    width: 85%;
+    height: 95%;
+    /* border: 1px solid white; */
+    display: flex;
+    flex-wrap: wrap;
+    overflow: hidden;
+}
+header .menu , .song{
+    width: 25%;
+    height: 90%;
+    /* border: 1px solid white; */
+    background: #111727;
+    box-shadow: 5px 0px 2px #090f1f;
+    color: white;
+    overflow: auto;
+}
+/* header .menu , .song::-webkit-scrollbar{
+    display: none;
+} */
+header .song{
+    width: 75%;
+    background: #0b1320;
+
+}
+header .play{
+    width: 100%;
+    height: 10%;
+     /* border: 1px solid white;  */
+    background: #111727;
+    box-shadow: 0px 3px 8px #090f1f;
+
+
+}
+header .menu h1{
+    font-size: 20px;
+    margin: 15px 0px 0px 20px;
+    font-weight: 500;
+
+}
+header .menu .playlist{
+    margin: 40px 0px 0px 20px;
+}
+header .menu .playlist h4{
+    font-size: 14px;
+    font-weight: 400;
+    padding-bottom: 10px;
+    color: #4c5262;
+    display: flex;
+    align-items: center;
+    transition: .3s linear;
+}
+header .menu .playlist h4:hover{
+    color: white;
+}
+header .menu .playlist h4 span{
+    position:relative;
+    margin-right: 35px;
+}
+header .menu .playlist h4 span::before{
+    content: '';
+    position:absolute;
+    width: 4px;
+    height: 4px;
+    border: 2px solid #4c5262;
+    border-radius: 50%;
+    top: -4px;
+    transition: .3s linear;
+}
+header .menu .playlist h4 span::before{
+    border: 2px solid white;
+}
+header .menu .playlist h4 .bi{
+   display: none;
+}
+header .menu .playlist h4 .active{
+    color: #36e2ec;
+}
+ header .menu .playlist h4 .active span  {
+    display: none;
+}
+header .menu .playlist h4 .active .bi  {
+    display: flex;
+    margin-right: 20px;
+
+}
+header .menu .menu_song{
+    width: 100%;
+    height: 420px;
+    /* border: 2px solid white; */
+    margin-top: 40px;
+}
+header .menu .menu_song li{
+    list-style-type: none;
+    position: relative;
+    padding: 5px 0px 5px 20px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: .3s linear;
+
+}
+header .menu .menu_song li:hover{
+    background: rgb(105, 105, 105, .1);
+}
+header .menu .menu_song li span{
+font-size: 12px;
+font-weight: 600;
+color: #4c5262;
+}
+header .menu .menu_song li img{
+  width: 32px;
+  height: 32px;
+  margin-left: 25px;
+}
+header .menu .menu_song li h5{
+    font-size: 11px;
+    margin-left: 15px;
+    width: 170px;
+    /* border: 1px solid white; */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+header .menu .menu_song li h5 .subtitle{
+    font-size: 9px;
+    color: #4c5262;
+  }
+  header .menu .menu_song li .bi{
+    position: absolute;
+    right: 15px;
+ }
+ header .play{
+    display: flex;
+    align-items: center;
+    padding: 0px 20px;
+
+ }
+ header .play .wave{
+    width: 30px;
+    height: 30px;
+    /* border: 1px solid white; */
+    padding-bottom: 5px;
+    display: flex;
+    align-items: flex-end;
+    margin-right: 10px;
+ }
+ header .play .wave .wave1{
+    width: 3px;
+    height: 10px;
+    background: #36e2ec;
+    display: flex;
+    margin-right: 2px;
+    border-radius: 10px 10px 0px 0px;
+    animation: unset;
+ }
+ header .play .wave .wave1:nth-child(2){
+    height: 13px;
+    margin-right: 3.5px;
+    animation-delay: .4s;
+ }
+ header .play .wave .wave1:nth-child(3){
+    height: 8px;
+    animation-delay: .8s;
+
+}
+/* javascript classes */
+header .play .active1 .wave1{
+    animation: wave .5s linear infinite;
+}
+header .play .active1 .wave1:nth-child(2){
+    animation-delay: .4s;
+ }
+ header .play .active1.wave1:nth-child(3){
+    animation-delay: .8s;
+
+}
+
+  @keyframes wave{
+    0%{
+            height: 10px;
+    }
+    50%{
+            height: 15px;
+    }
+    100%{
+            height: 10px;
+    }
+  }
+ header .play img{
+    width: 35px;
+    height: 35px;
+
+ }
+ header .play h5{
+    width: 130px;
+    /* border: 1px solid white; */
+    margin-left: 15px;
+    color: white;
+    line-height: 17px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 13px;
+}
+header .play h5 .subtitle{
+   font-size: 11px;
+   color: #4c5262;
+   width: 100%;
+   overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+header .play .icon{
+    font-size: 20px;
+    color: white;
+    margin: 0px 20px 0px 40px;
+    outline: none;
+    display: flex;
+    align-items: center;
+
+ }
+ header .play .icon .bi{
+   cursor: pointer;
+   outline: none;
+
+ }
+ header .play .icon .shuffle{
+    font-size: 17px;
+    margin-right: 10px;
+    width: 17.5px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+
+  }
+  header .play .icon #download_music{
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+    margin-left: 12px;
+
+  }
+  header .play .icon .bi:nth-child(3){
+  border: 1px solid rgb(105, 105, 105, .1);
+    border-radius: 50%;
+    padding: 1px 5px 0px 7px;
+    margin: 0px 5px;
+  }
+  header .play span{
+    color: white;
+    width: 32px;
+    /* border: 1px solid white; */
+    font: 11px;
+    font-weight: 400;
+}
+header .play #currStart{
+    margin: 0px 0px 0px 20px;
+
+ }
+ header .play .bar{
+position: relative;
+width: 43%;
+height: 2px;
+background: rgb(105, 105, 170, .1);
+margin: 0px 15px 0px 10px;
+ }
+ header .play .bar .bar2{
+    position: absolute;
+    background: #36e2ec;
+    width: 0;
+    height: 100%;
+    top: 0;
+    transition: 1s linear;
+
+}
+header .play .bar .dot{
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    background: #36e2ec;
+    border-radius: 50%;
+    left: 0%;
+    top: -1.5px;
+    transition: 1s linear;
+}
+header .play .bar .dot::before{
+    content: '';
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    border: 1px solid white;
+    border-radius: 50%;
+    left: -6.5px;
+    top: -6.5px;
+    box-shadow: inset 0px 0px 3px #36e2ec;
+}
+header .play .bar input{
+    position: absolute;
+    width: 100%;
+    top: -7px;
+    left: 0;
+    cursor: pointer;
+    z-index: 999999999999999999999999999999999999999999;
+    opacity: 0;
+}
+header .play .vol{
+    position: relative;
+    width: 100px;
+    height: 2px;
+    background: rgb(105, 105, 170, .1);
+    margin-left: 50px;
+}
+header .play .vol .bi{
+    position: absolute;
+    color: white;
+    font-size: 25px;
+    top: -11px;
+    left: -30px;
+}
+header .play .vol input{
+    position: absolute;
+    width: 100%;
+    top: -6px;
+    left: 0;
+    cursor: pointer;
+    z-index: 9999999999999999999999999999999;
+    opacity: 0;
+}
+header .play .vol .vol_bar{
+    position: absolute;
+    background: #36e2ec;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    transition: 1s linear;
+}
+header .play .vol .dot{
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    background: #36e2ec;
+    border-radius: 50%;
+    left: 100%;
+    top: -1.5px;
+    transition: 1s linear;
+}
+header .play .vol .dot::before{
+    content: '';
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    border: 1px solid white;
+    border-radius: 50%;
+    left: -6.5px;
+    top: -6.5px;
+    box-shadow: inset 0px 0px 3px #36e2ec;
+}
+header .song{
+    z-index: 2;
+}
+header .song::before{
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 300px;
+    background: url('/arjit_bg.png');
+    z-index: -1;
+
+}
+header .song nav{
+    width: 90%;
+    height: 10%;
+    /* border: 1px solid white; */
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+header .song nav ul{
+    display: flex;
+}
+header .song nav ul li{
+    list-style: none;
+    position: relative;
+    font-size: 13px;
+    color: #4c5262;
+    margin-right: 25px;
+    cursor: pointer;
+    transition: .3s linear;
+}
+header .song nav ul li:hover{
+    color: white;
+}
+header .song nav ul li:nth-child(1){
+    color: white;
+}
+header .song nav ul li span{
+  position: absolute;
+  width: 100%;
+  height: 2.5px;
+  background: #36e2ec;
+  bottom: -5px;
+  left: 0;
+  border-radius: 20px;
+}
+header .song nav .search{
+    position: relative;
+    width: 40%;
+    padding: 1px 10px;
+    border-radius: 20px;
+    /* border: 1px solid white; */
+    color: grey;
+  }
+  header .song nav .search::before{
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgb(184, 184, 184, .1);
+    border-radius: 20px;
+    backdrop-filter: blur(5px);
+    z-index: -1;
+  }
+  header .song nav .search .search_results{
+    position: absolute;
+    width: 100%;
+    height: 200px;
+    /* border: 1px solid white; */
+    margin-top: 10px;
+    border-radius: 10px;
+    overflow: auto;
+  }
+  header .song nav .search .search_results::-webkit-scrollbar{
+    display: none;
+  }
+  header .song nav .search .search_results .card{
+   width: 100%;
+   min-height: 45px;
+   /* border: 1px solid white; */
+   display: flex;
+   align-items: center;
+   background: rgb(184, 184, 184, .1);
+   margin-bottom: 5px;
+   text-decoration: none;
+   display: none;
+}
+header .song nav .search .search_results .card img{
+    width: 35px;
+    height: 35px;
+    border-radius: 5px;
+
+ }
+ header .song nav .search .search_results .card .content{
+   width: 80%;
+   height: 100%;
+   /* border: 1px solid white; */
+   padding: 0;
+   font-size: 13px;
+   font-weight: 600;
+   color: white;
+ }
+ header .song nav .search .search_results .card .content .subtitle{
+    font-size: 11px;
+    color: #a4a8b4;
+    font-weight: 500;
+  }
+  header .song nav .search .bi{
+    font-size: 13px;
+    padding: 3px 0px 0px 10px;
+  }
+  header .song nav .search input{
+    background: none;
+    border: none;
+    outline: none;
+    padding: 0px 10px;
+    color: white;
+    font-size: 12px;
+  }
+  header .song nav .user{
+   position: relative;
+   width: 30px;
+   height: 30px;
+   border: 1px;
+   /* border: 1px solid white; */
+   border-radius: 50%;
+  }
+  header .song nav .user img{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    box-shadow: 2px 2px 8px #121213;
+   }
+   header .song .content{
+    width: 90%;
+    height: 30%;
+    /* border: 1px solid white; */
+    margin: auto;
+    padding-top: 20px ;
+   }
+   header .song .content h1{
+        font-size: 25px;
+        font-weight: 600;
+   }
+   header .song .content p{
+    font-size: 11px;
+    font-weight: 400;
+    color: #4c5262;
+    margin: 5px;
+}
+header .song .content .buttons{
+   margin-top: 15px;
+}
+header .song .content .buttons button{
+    width: 130px;
+    height: 30px;
+    border: 2px solid white;
+    outline: none;
+    border-radius: 20px;
+    background: #5adae0;
+    color: white;
+    cursor: pointer;
+    transition: .3s linear;
+ }
+ header .song .content .buttons button:hover{
+    background: none;
+    color: #36e2ec;
+ }
+ header .song .content .buttons button:nth-child(2){
+    background: none;
+    color: #36e2ec;
+ }
+ header .song .content .buttons button:nth-child(2):hover{
+    background: #36e2ec;
+    color: white;
+ }
+ header .song .popular{
+    width: 90%;
+    height: auto;
+    margin: auto;
+    margin-top: 15px;
+    /* border: 1px solid white; */
+ }
+ header .song .popular .h4{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+ }
+ header .song .popular .h4 .bi{
+    color: #a4a8b4;
+    cursor: pointer;
+    transition: .3s linear;
+ }
+ header .song .popular .h4 .bi:hover{
+    color: white;
+ }
+ header .song .popular .pop_song{
+    width: 100%;
+    height: 150px;
+    margin-top: 15px;
+    display: flex;
+    /* border: 1px solid white; */
+    overflow: auto;
+    scroll-behavior: smooth;
+ }
+ header .song .popular .pop_song::-webkit-scrollbar{
+   display: none;
+ }
+ header .song .popular .pop_song li{
+   width: 100px;
+   height: 140px;
+   list-style: none;
+   margin-right: 10px;
+   transition: .3s linear;
+ }
+ header .song .popular .pop_song li:hover{
+        background: rgb(105, 105, 170, .1);
+  }
+  header .song .popular .pop_song li .img_play{
+    position: relative;
+    width: 100px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+header .song .popular .pop_song li .img_play img{
+    width: 100%;
+    height: 100%;
+}
+header .song .popular .pop_song li .img_play .bi{
+    position: absolute;
+    font-size: 20px;
+    cursor: pointer;
+    transition: .3s linear;
+    opacity: 0;
+}
+header .song .popular .pop_song li:hover .img_play .bi{
+    opacity: 1;
+}
+header .song .popular .pop_song li h5{
+    padding: 5px 0px 0px 5px;
+    line-height: 15px;
+    font-size: 10px;
+    width: 100px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+header .song .popular .pop_song li h5 .subtitle{
+    font-size: 9px;
+    width: 100px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    color: #4c5262;
+}
+header .song .pop_artist{
+    width: 90%;
+    height: auto;
+    /* border: 1px solid white; */
+    margin: auto;
+    margin-top: 15px;
+}
+header .song .pop_artist .h4{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+ }
+ header .song .pop_artist .h4 .bi{
+    color: #a4a8b4;
+    cursor: pointer;
+    transition: .3s linear;
+ }
+ header .song .pop_artist .h4 .bi:hover{
+    color: white;
+ }
+ header .song .pop_artist .item{
+    width: 100%;
+    height: auto;
+    margin-top: 15px;
+    display: flex;
+    /* border: 1px solid white; */
+    overflow: auto;
+    scroll-behavior: smooth;
+ }
+ header .song .pop_artist .item::-webkit-scrollbar{
+    display: none;
+ }
+ header .song .pop_artist .item li{
+    list-style: none;
+    position: relative;
+    min-width:60px;
+    height: 60px;
+    border-radius: 50%;
+    margin-right: 20px;
+    cursor: pointer;
+ }
+ header .song .pop_artist .item li img{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+ }
+
+
+
+    </style>
+</head>
+<body>
+<header>
+    <div class="menu">
+        <h1>PlayList</h1>
+        <div class="playlist">
+            <h4 class="active"><span></span><i class="bi bi-music-note-beamed"></i>Playlist</h4>
+            <h4><span></span><i class="bi bi-music-note-beamed"></i>Last Listening</h4>
+            <h4><span></span><i class="bi bi-music-note-beamed"></i>Recommended</h4>
+
+        </div>
+        <div class="menu_song">
+            <li class="songItem">
+                <span>01</span>
+                <img src="/img/2.jpeg" alt="">
+                <h5>On My Way <br>
+                    <div class="subtitle">Alan Walker</div>
+                </h5>
+                <i class="bi playListPlay bi-play-circle-fill" id="1"></i>
+            </li>
+            <li class="songItem">
+                <span>01</span>
+                <img src="/img/2.jpeg" alt="">
+                <h5>On My Way <br>
+                    <div class="subtitle">Alan Walker</div>
+                </h5>
+                <i class="bi playListPlay bi-play-circle-fill" id="2"></i>
+            </li>
+            <li class="songItem">
+                <span>01</span>
+                <img src="/img/2.jpeg" alt="">
+                <h5>On My Way <br>
+                    <div class="subtitle">Alan Walker</div>
+                </h5>
+                <i class="bi playListPlay bi-play-circle-fill" id="3"></i>
+            </li>
+            <li class="songItem">
+                <span>01</span>
+                <img src="/img/2.jpeg" alt="">
+                <h5>On My Way <br>
+                    <div class="subtitle">Alan Walker</div>
+                </h5>
+                <i class="bi playListPlay bi-play-circle-fill" id="4"></i>
+            </li>
+            <li class="songItem">
+                <span>01</span>
+                <img src="/img/2.jpeg" alt="">
+                <h5>On My Way <br>
+                    <div class="subtitle">Alan Walker</div>
+                </h5>
+                <i class="bi playListPlay bi-play-circle-fill" id="5"></i>
+            </li>
+
+
+
+
+
+        </div>
+    </div>
+    <div class="song">
+        <nav>
+            <ul>
+                <li>Discover<span></span></li>
+                <li>My Library</li>
+                <li>Radio</li>
+            </ul>
+            <div class="search">
+                <i class="bi bi-search"></i>
+                <input type="text" placeholder="Search Music">
+            </div>
+            <div class="user">
+                <img src="/img/sandy.jpg" alt="">
+            </div>
+
+        </nav>
+        <div class="content">
+            <h1>Arjit Singh</h1>
+            <p>Arjit Singh is a highly acclaimed indian playback singer and music composer, <br>widely recognized as one of the leading voices in contempory Bollywood</p>
+            <div class="buttons">
+                <button>Play</button>
+                <button>Follow</button>
+            </div>
+        </div>
+        <div class="popular">
+            <div class="h4">
+                <h4>Popular Songs</h4>
+                <div class="btn_s">
+                    <i class="bi bi-arrow-left-short" id="pop_song_left"></i>
+                    <i class="bi bi-arrow-right-short" id="pop_song_right"></i>
+                </div>
+            </div>
+            <div class="pop_song">
+                <li class="songItem">
+                    <div class="img_play">
+                        <img src="/img/2.jpeg" alt="">
+                        <i class="bi playListPlay bi-play-circle-fill" id="6"></i>
+                    </div>
+                    <h5>On My Way <br>
+                        <div class="subtitle">Alan Walker</div>
+                    </h5>
+                </li>
+                <li class="songItem">
+                    <div class="img_play">
+                        <img src="/img/2.jpeg" alt="">
+                        <i class="bi playListPlay bi-play-circle-fill" id="7"></i>
+                    </div>
+                    <h5>On My Way <br>
+                        <div class="subtitle">Alan Walker</div>
+                    </h5>
+                </li>
+                <li class="songItem">
+                    <div class="img_play">
+                        <img src="/img/2.jpeg" alt="">
+                        <i class="bi playListPlay bi-play-circle-fill" id="8"></i>
+                    </div>
+                    <h5>On My Way <br>
+                        <div class="subtitle">Alan Walker</div>
+                    </h5>
+                </li>
+                <li class="songItem">
+                    <div class="img_play">
+                        <img src="/img/2.jpeg" alt="">
+                        <i class="bi playListPlay bi-play-circle-fill" id="9"></i>
+                    </div>
+                    <h5>On My Way <br>
+                        <div class="subtitle">Alan Walker</div>
+                    </h5>
+                </li>
+                <li class="songItem">
+                    <div class="img_play">
+                        <img src="/img/2.jpeg" alt="">
+                        <i class="bi playListPlay bi-play-circle-fill" id="10"></i>
+                    </div>
+                    <h5>On My Way <br>
+                        <div class="subtitle">Alan Walker</div>
+                    </h5>
+                </li>
+            </div>
+        </div>
+        <div class="pop_artist">
+            <div class="h4">
+                <h4>Popular Artists</h4>
+                <div class="btn_s">
+                    <i class="bi bi-arrow-left-short" id="pop_art_left"></i>
+                    <i class="bi bi-arrow-right-short" id="pop_art_right"></i>
+                </div>
+            </div>
+            <div class="item">
+                <li>
+                    <a href="arjit.html"><img src="/img/arjit.jpg" alt=""></a>
+                </li>
+                <li>
+                    <img src="/img/sonu_nigam.jpg" alt="">
+                </li>
+                <li>
+                    <img src="/img/ajay-atulj.jpeg" alt="">
+                </li>
+                <li>
+                    <img src="/img/himesh.jpg" alt="">
+                </li>
+                <li>
+                    <img src="img/nautiyal.jpg" alt="">
+                </li>
+                <li>
+                    <img src="/img/pritam.jpg" alt="">
+                </li>
+                <li>
+                    <img src="/img/shreya.jpg" alt="">
+                </li>
+                <li>
+                    <img src="/img/lata.jpg" alt="">
+                </li>
+                <li>
+                    <img src="/img/asha.jpg" alt="">
+                </li>
+                <li>
+                    <img src="/img/kishore.jpg" alt="">
+                </li>
+                <li>
+                    <img src="/img/rd.jpg" alt="">
+                </li>
+                <li>
+                    <img src="/img/udit.jpg" alt="">
+                </li>
+                <li>
+                    <img src="/img/kumar.jpg" alt="">
+                </li>
+                <li>
+                    <img src="/img/shankar.jpg" alt="">
+                </li>
+            </div>
+        </div>
+    </div>
+    <div class="play">
+        <div class="wave" id="wave">
+            <div class="wave1"></div>
+            <div class="wave1"></div>
+            <div class="wave1"></div>
+
+        </div>
+        <img src="/img/arjit/1.jpg" alt="" id="poster">
+        <h5 id="title">
+            Apna Bana Le
+            <div class="subtitle">Arjit Singh</div>
+        </h5>
+        <div class="icon">
+            <i class="bi shuffle bi-music-note-beamed">next</i>
+            <i class="bi bi-skip-start-fill" id="back"></i>
+            <i class="bi bi-play-fill" id="masterPlay"></i>
+            <i class="bi bi-skip-end-fill" id="next"></i>
+            <a href="" download id="download_music"><i class="bi bi-cloud-arrow-down-fill" ></i></a>
+        </div>
+        <span id="currStart">0:00</span>
+        <div class="bar">
+            <input type="range" id="seek" min="0" max="100">
+            <div class="bar2" id="bar2"></div>
+            <div class="dot"></div>
+        </div>
+        <span id="currEnd">0.30</span>
+        <div class="vol">
+            <i class="bi bi-volume-up-fill" id="vol_icon"></i>
+            <input type="range" min="0" max="100" id="vol">
+            <div class="vol_bar"></div>
+            <div class="dot" id="vol_dot"></div>
+
+        </div>
+    </div>
+
+</header>
+</body>
+<script>
+    const music = new Audio("/audio/1.mp3");
+ // music.play();
+
+ const songs = [
+     {
+         id: "1",
+         songName: `Apna Bana Le  <br><div class="subtitle">Arjit Singh</div>`,
+         poster:"/img/arjit/1.jpg",
+     },
+     {
+         id: "2",
+         songName: `Baton ko Teriy <br><div class="subtitle">Arjit Singh</div>`,
+         poster:"/img/arjit/2.jpg",
+     },
+     {
+         id: "3",
+         songName: `Channa Mereya  <br><div class="subtitle">Arjit Singh</div>`,
+         poster:"/img/arjit/3.jpg",
+     },
+     {
+         id: "4",
+         songName: `Khairiyat <br><div class="subtitle">Arjit Singh</div>`,
+         poster:"/img/arjit/4.jpg",
+     },
+     {
+         id: "5",
+         songName: `Kesariya<br><div class="subtitle">Arjit Singh</div>`,
+         poster:"/img/arjit/5.jpg"
+     },
+     {
+         id: "6",
+         songName: `A Dil Hai Mushkil <br><div class="subtitle">Arjit Singh</div>`,
+         poster:"/img/arjit/6.jpg",
+     },
+     {
+         id: "7",
+         songName: `Heeriye <br><div class="subtitle">Arjit Singh</div>`,
+         poster:"/img/arjit/7.jpg",
+     },
+     {
+         id: "8",
+         songName: `Thodi Jagah  <br><div class="subtitle">Arjit Singh</div>`,
+         poster:"/img/arjit/8.jpg",
+     },
+     {
+         id: "9",
+         songName: `Sajni Re.. <br><div class="subtitle">Arjit Singh</div>`,
+         poster:"/img/arjit/9.jpg",
+     },
+     {
+         id: "10",
+         songName: `Uska Hi Bananaa<br><div class="subtitle">Arjit Singh</div>`,
+         poster:"/img/arjit/10.jpg"
+     }
+ ]
+
+ Array.from(document.getElementsByClassName("songItem")).forEach((e, i) => {
+     e.getElementsByTagName("img")[0].src = songs[i].poster;
+     e.getElementsByTagName("h5")[0].innerHTML = songs[i].songName;
+
+ })
+ let search_results = document.getElementsByClassName("search_results")[0];
+ songs.forEach(element =>{
+     const{id, songName, poster} = element;
+     // console.log(id)
+     let card = document.createElement("a");
+     card.classList.add("card");
+     card.href = "#"+id;
+     card.innerHTML = `
+                             <img src="${poster}" alt="">
+                             <div class="content">
+                             ${songName}
+                             </div>
+                         `;
+                         search_results.appendChild(card);
+});
+
+let input = document.getElementsByTagName("input")[0];
+input.addEventListener("keyup", () =>{
+    let input_value = input.value.toUpperCase();
+    let items = search_results.getElementsByTagName("a");
+    for (let index = 0; index < items.length; index++) {
+        let as = items[index].getElementsByClassName("content")[0];
+        let text_value = as.textContent || as.innerHTML;
+
+        if (text_value.toUpperCase().indexOf(input_value) > -1) {
+            items[index].style.display = "flex";
+
+        }else{
+            items[index].style.display = "none";
+
+        }
+        if (input.value == 0) {
+            search_results.style.display="none";
+
+        } else {
+
+
+        }
+    }
+})
+ let masterPlay = document.getElementById("masterPlay");
+ let wave = document.getElementById("wave");
+
+ masterPlay.addEventListener("click", () => {
+     if(music.paused || music.currentTime <= 0){
+         music.play();
+         wave.classList.add("active1");
+         masterPlay.classList.remove("bi-play-fill");
+         masterPlay.classList.add("bi-pause-fill");
+     }else{
+             music.pause();
+             wave.classList.remove("active1");
+             masterPlay.classList.add("bi-play-fill");
+             masterPlay.classList.remove("bi-pause-fill");
+
+     }
+ });
+
+
+ const makeAllplays = () => {
+     Array.from(document.getElementsByClassName("playListPlay")).forEach((el) =>{
+         el.classList.add("bi-play-circle-fill");
+         el.classList.remove("bi-pause-circle-fill");
+     })
+ }
+ const makeAllBackground = () => {
+     Array.from(document.getElementsByClassName("songItem")).forEach((el) =>{
+         el.style.background = `rgb(105, 105, 105, .0)`;
+     })
+ }
+
+
+
+ let index = 0;
+ let poster = document.getElementById("poster");
+ let download_music =document.getElementById("download_music");
+ let title = document.getElementById("title");
+ Array.from(document.getElementsByClassName("playListPlay")).forEach((e) =>{
+     e.addEventListener("click", (el) =>{
+         index= el.target.id;
+         // console.log(index);
+         music.src = `audio/arjit/${index}.mp3`;
+         poster.src = `img/arjit/${index}.jpg`;
+         music.play();
+         masterPlay.classList.remove("bi-play-fill");
+         masterPlay.classList.add("bi-pause-fill");
+         download_music.href = `audio/arjit/${index}.mp3`;
+         let songTitles = songs.filter((els) => {
+             return els.id == index;
+         });
+         songTitles.forEach(elss => {
+             let {songName} = elss;
+             title.innerHTML = songName;
+             download_music.setAttribute("download",songName);
+         })
+
+         makeAllBackground();
+         Array.from(document.getElementsByClassName("songItem"))[index-1].style.background="rgb(105, 105, 105, .1)";
+         makeAllplays();
+         el.target.classList.remove("bi-play-circle-fill");
+         el.target.classList.add("bi-pause-circle-fill");
+         wave.classList.add("active1");
+
+     })
+ });
+ let currStart = document.getElementById("currStart");
+ let currEnd = document.getElementById("currEnd");
+ let seek = document.getElementById("seek");
+ let bar2 = document.getElementById("bar2");
+ let dot = document.getElementsByClassName("dot")[0];
+
+
+
+
+
+
+ music.addEventListener("timeupdate",()=>{
+     let music_curr = music.currentTime;
+     let music_dur = music.duration;
+     //  console.log(music_dur);
+
+     let min1 = Math.floor(music_dur/60);
+     let sec1 = Math.floor(music_dur%60);
+     if(sec1<10){
+         sec1 = `0${sec1}`;
+     }
+     currEnd.innerText =`${min1}:${sec1}`;
+
+     let min2 = Math.floor(music_curr/60);
+     let sec2 = Math.floor(music_curr%60);
+     if(sec2<10){
+         sec2 = `0${sec2}`;
+     }
+     currStart.innerText =`${min2}:${sec2}`;
+
+     let progressBar = parseInt((music_curr/music_dur)*100);
+     seek.value = progressBar;
+     // console.log(seek.value);
+     let seekbar = seek.value;
+     bar2.style.width = `${seekbar}%`;
+     dot.style.left = `${seekbar}%`;
+ });
+ seek.addEventListener("change", ()=>{
+     music.currentTime = seek.value * music_dur/100;
+ });
+ let vol_icon = document.getElementById("vol_icon");
+ let vol = document.getElementById("vol");
+ let vol_bar = document.getElementsByClassName("vol_bar")[0];
+ let vol_dot = document.getElementById("vol_dot");
+
+ vol.addEventListener("change", ()=>{
+     if(vol.value == 0){
+         vol_icon.classList.remove("bi-volume-up-fill");
+         vol_icon.classList.remove(" bi-volume-down-fill");
+         vol_icon.classList.add(" bi-volume-off-fill");
+     }
+     if(vol.value >0){
+         vol_icon.classList.remove("bi-volume-up-fill");
+         vol_icon.classList.add(" bi-volume-down-fill");
+         vol_icon.classList.remove(" bi-volume-off-fill");
+
+     }
+     if(vol.value >50){
+         vol_icon.classList.add("bi-volume-up-fill");
+         vol_icon.classList.remove(" bi-volume-down-fill");
+         vol_icon.classList.remove(" bi-volume-off-fill");
+
+     }
+     let vol_a = vol.value;
+     vol_bar.style.width = `${vol_a}%`;
+     vol_dot.style.left =    `${vol_a}% `;
+     music.volume = vol_a / 100;
+
+ });
+
+ let back = document.getElementById("back");
+ let next = document.getElementById("next");
+
+ back.addEventListener("click",()=>{
+     index -= 1;
+     if(index<1){
+         index = Array.from(document.getElementsByClassName("songItem")).length;
+     }
+     music.src = `audio/${index}.mp3`;
+         poster.src = `img/arjit/${index}.jpg`;
+         music.play();
+         masterPlay.classList.remove("bi-play-fill");
+         masterPlay.classList.add("bi-pause-fill");
+
+         let songTitles = songs.filter((els) => {
+             return els.id == index;
+         });
+         songTitles.forEach(elss => {
+             let {songName} = elss;
+             title.innerHTML = songName;
+         })
+
+         makeAllBackground();
+         Array.from(document.getElementsByClassName("songItem"))[index-1].style.background="rgb(105, 105, 105, .1)";
+         makeAllplays();
+         el.target.classList.remove("bi-play-circle-fill");
+         el.target.classList.add("bi-pause-circle-fill");
+         wave.classList.add("active1");
+
+     })
+
+ next.addEventListener("click", ()=>{
+     index ++;
+     if(index>Array.from(document.getElementsByClassName("songItem")).length){
+         index = 1;
+     }
+     music.src = `audio/arjit/${index}.mp3`;
+         poster.src = `img/arjit/${index}.jpg`;
+         music.play();
+         masterPlay.classList.remove("bi-play-fill");
+         masterPlay.classList.add("bi-pause-fill");
+
+         let songTitles = songs.filter((els) => {
+             return els.id == index;
+         });
+         songTitles.forEach(elss => {
+             let {songName} = elss;
+             title.innerHTML = songName;
+         })
+
+         makeAllBackground();
+         Array.from(document.getElementsByClassName("songItem"))[index-1].style.background="rgb(105, 105, 105, .1)";
+         makeAllplays();
+         el.target.classList.remove("bi-play-circle-fill");
+         el.target.classList.add("bi-pause-circle-fill");
+         wave.classList.add("active1");
+ })
+
+
+
+
+ let pop_song_left = document.getElementById("pop_song_left");
+ let pop_song_right = document.getElementById("pop_song_right");
+ let pop_song = document.getElementsByClassName("pop_song")[0];
+
+
+ pop_song_right.addEventListener('click', () => {
+     pop_song.scrollLeft += 330;
+ })
+ pop_song_left.addEventListener('click', () => {
+     pop_song.scrollLeft -= 330;
+ })
+
+
+ let pop_art_left = document.getElementById("pop_art_left");
+ let pop_art_right = document.getElementById("pop_art_right");
+ let item = document.getElementsByClassName("item")[0];
+
+
+ pop_art_right.addEventListener('click', () => {
+     item.scrollLeft += 330;
+ })
+ pop_art_left.addEventListener('click', () => {
+     item.scrollLeft -= 330;
+ })
+ let shuffle = document.getElementsByClassName("shuffle")[0];
+ shuffle.addEventListener("click", ()=>{
+     let a = shuffle.innerHTML;
+     switch(a){
+         case "next":
+             shuffle.classList.add("bi-arrow-repeat");
+             shuffle.classList.remove("bi-music-note-beamed");
+             shuffle.classList.remove("bi-shuffle");
+             shuffle.innerHTML = "repeat";
+             break;
+
+         case "repeat":
+             shuffle.classList.remove("bi-arrow-repeat");
+             shuffle.classList.remove("bi-music-note-beamed");
+             shuffle.classList.add("bi-shuffle");
+             shuffle.innerHTML = "random";
+             break;
+         case "random" :
+             shuffle.classList.remove("bi-arrow-repeat");
+             shuffle.classList.add("bi-music-note-beamed");
+             shuffle.classList.remove("bi-shuffle");
+             shuffle.innerHTML = "next";
+             break;
+
+
+
+
+     }
+ });
+
+ const next_music = ()=>{
+     if(index == songs.length){
+         index = 1;
+     }else{
+         index++;
+     }
+     music.src = `audio/${index}.mp3`;
+     poster.src = `img/${index}.jpg`;
+     music.play();
+     masterPlay.classList.remove("bi-play-fill");
+     masterPlay.classList.add("bi-pause-fill");
+     download_music.href = `audio${index}.mp3`;
+     let songTitles = songs.filter((els) => {
+         return els.id == index;
+     });
+     songTitles.forEach(elss => {
+         let {songName} = elss;
+         title.innerHTML = songName;
+         download_music.setAttribute("download",songName);
+     })
+
+     makeAllBackground();
+     Array.from(document.getElementsByClassName("songItem"))[index-1].style.background="rgb(105, 105, 105, .1)";
+     makeAllplays();
+     el.target.classList.remove("bi-play-circle-fill");
+     el.target.classList.add("bi-pause-circle-fill");
+     wave.classList.add("active1");
+
+ }
+ const repeat_music = ()=>{
+     index;
+     music.src = `audio/${index}.mp3`;
+     poster.src = `img/${index}.jpg`;
+     music.play();
+     masterPlay.classList.remove("bi-play-fill");
+     masterPlay.classList.add("bi-pause-fill");
+     download_music.href = `audio${index}.mp3`;
+     let songTitles = songs.filter((els) => {
+         return els.id == index;
+     });
+     songTitles.forEach(elss => {
+         let {songName} = elss;
+         title.innerHTML = songName;
+         download_music.setAttribute("download",songName);
+     })
+
+     makeAllBackground();
+     Array.from(document.getElementsByClassName("songItem"))[index-1].style.background="rgb(105, 105, 105, .1)";
+     makeAllplays();
+     el.target.classList.remove("bi-play-circle-fill");
+     el.target.classList.add("bi-pause-circle-fill");
+     wave.classList.add("active1");
+
+ }
+ const random_music = ()=>{
+     if(index == songs.length){
+         index = 1;
+     }else{
+         index = Math.floor((Math.random() * songs.length)+1);
+     }
+     music.src = `audio/${index}.mp3`;
+     poster.src = `img/${index}.jpg`;
+     music.play();
+     masterPlay.classList.remove("bi-play-fill");
+     masterPlay.classList.add("bi-pause-fill");
+     download_music.href = `audio${index}.mp3`;
+     let songTitles = songs.filter((els) => {
+         return els.id == index;
+     });
+     songTitles.forEach(elss => {
+         let {songName} = elss;
+         title.innerHTML = songName;
+         download_music.setAttribute("download",songName);
+     })
+
+     makeAllBackground();
+     Array.from(document.getElementsByClassName("songItem"))[index-1].style.background="rgb(105, 105, 105, .1)";
+     makeAllplays();
+     el.target.classList.remove("bi-play-circle-fill");
+     el.target.classList.add("bi-pause-circle-fill");
+     wave.classList.add("active1");
+
+ }
+ music.addEventListener("ended",()=>{
+     let b = shuffle.innerHTML;
+     switch(b){
+         case "repeat":
+             repeat_music()
+             break;
+         case "next":
+             next_music();
+             break;
+         case "random":
+             random_music();
+             break;
+
+     }
+
+
+ })
+</script>
+</html>
